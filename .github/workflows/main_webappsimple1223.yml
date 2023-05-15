@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://webappacr1223.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_a97caf4afd9e4a8ab359b2cc0b6d06d0 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_f120a5be35f24b699411f8f97e5663da }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_14ba3689f97345c88a3a986ae8f01c61 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_b88f5ead8bae42e3b9655ab88ed768c0 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: webappacr1223.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_a97caf4afd9e4a8ab359b2cc0b6d06d0 }}/webappsimple:${{ github.sha }}
+        tags: webappacr1223.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_14ba3689f97345c88a3a986ae8f01c61 }}/webappsimple:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'webappsimple1223'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_27e3a894a5c64b89a58e6378e19edde7 }}
-        images: 'webappacr1223.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_a97caf4afd9e4a8ab359b2cc0b6d06d0 }}/webappsimple:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_db34b09eab8c4b65832015cec77ed772 }}
+        images: 'webappacr1223.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_14ba3689f97345c88a3a986ae8f01c61 }}/webappsimple:${{ github.sha }}'
